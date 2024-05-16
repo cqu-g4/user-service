@@ -4,6 +4,7 @@ import au.edu.cqu.g4.userservice.entities.users.dtos.CreateUserDto;
 import au.edu.cqu.g4.userservice.entities.users.dtos.UserDto;
 import au.edu.cqu.g4.userservice.exceptions.CustomBackendException;
 import au.edu.cqu.g4.userservice.proxies.ProxyCaller;
+import au.edu.cqu.g4.userservice.proxies.dtos.InsuranceCompanyDto;
 import au.edu.cqu.g4.userservice.proxies.dtos.UserRegistrationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,9 +34,15 @@ public class UserController {
         User user = userService.getById(id);
         if(user == null) throw new CustomBackendException("User not found");
 
-        user.setInsuranceCompany(insuranceCompany);
-        UserDto dto = userMapper.toDto(userService.save(user));
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        // Check if insurance company exists
+        try {
+            caller.getInsuranceCompanyById(insuranceCompany.getId());
 
+            user.setInsuranceCompany(insuranceCompany);
+            UserDto dto = userMapper.toDto(userService.save(user));
+            return new ResponseEntity<>(dto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }
