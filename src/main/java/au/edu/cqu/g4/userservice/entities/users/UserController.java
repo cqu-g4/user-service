@@ -1,5 +1,6 @@
 package au.edu.cqu.g4.userservice.entities.users;
 
+import au.edu.cqu.g4.userservice.entities.users.dtos.BasicUserInfoDto;
 import au.edu.cqu.g4.userservice.entities.users.dtos.CreateUserDto;
 import au.edu.cqu.g4.userservice.entities.users.dtos.UserDto;
 import au.edu.cqu.g4.userservice.exceptions.CustomBackendException;
@@ -44,5 +45,16 @@ public class UserController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BasicUserInfoDto> getById(@PathVariable String id) {
+        User user = userService.getById(id);
+        if(user == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>(
+                new BasicUserInfoDto(user.getId(), user.getFirstName() + " " + user.getLastName()),
+                HttpStatus.OK
+        );
     }
 }
