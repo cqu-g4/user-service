@@ -1,11 +1,8 @@
 package au.edu.cqu.g4.userservice.entities.users.dtos;
 
 import au.edu.cqu.g4.userservice.entities.users.InsuranceCompany;
-import au.edu.cqu.g4.userservice.shared_entities.Address;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,5 @@
 package au.edu.cqu.g4.userservice.entities.users;
 
-import au.edu.cqu.g4.userservice.shared_entities.Address;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
