@@ -33,7 +33,7 @@ public class User {
     @Field("dateOfBirth")
     private LocalDate dateOfBirth;
 
-    private Address address;
+    private String address;
 
     @Field("contact_number")
     private String contactNumber;

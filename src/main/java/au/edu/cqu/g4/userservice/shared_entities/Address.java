@@ -21,4 +21,8 @@ public class Address {
     @Field("postcode")
     private String postcode;
 
+    public Address(String streetAddress1) {
+        this.streetAddress1 = streetAddress1;
+    }
+
 }

@@ -18,6 +18,6 @@ public class CreateUserDto {
     private LocalDate dateOfBirth;
     private String email;
     private String password;
-    private Address address;
+    private String address;
     private String contactNumber;
 }

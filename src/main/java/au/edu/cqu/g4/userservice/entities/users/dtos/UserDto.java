@@ -23,7 +23,7 @@ public class UserDto {
 
     private LocalDate dateOfBirth;
 
-    private Address address;
+    private String address;
 
     private String contactNumber;
 
